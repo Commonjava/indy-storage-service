@@ -9,9 +9,11 @@ affecting each other. For example, if one user is downloading the '/foo/bar.txt'
 while another user is uploading a new version of it, the first user will get the file 
 content at the moment he/she started the download.
 
-The most significant feature is the 'cluster' mode. You can start as many nodes to 
-scale up your storage service. The concurrent r/w promise is still held, 
-with no worry about r/w conflicts.
+The most significant feature is the 'cluster' mode. You can deploy it on a Cloud platform,
+such as Openshift, and scale up as many nodes as you want. 
+The concurrent r/w promise is still held without worrying about r/w conflicts.
+On cluster mode, all nodes share the same persistent volume and connect to the same Cassandra as the backend DB.
+There are some instructions at the bottom about how to set up a storage service cluster on Openshift.
 
 ## Prerequisite for building
 1. jdk11+
