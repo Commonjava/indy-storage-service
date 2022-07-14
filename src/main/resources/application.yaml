@@ -1,0 +1,43 @@
+quarkus:
+  http:
+    port: 8080
+    read-timeout: 30m
+    limits:
+      max-body-size: 500M
+
+  package:
+    type: uber-jar
+
+  application:
+      name: "indy-storage-service"
+
+  # Logging (disable console on prod)
+  log:
+    level: INFO
+    min-level: TRACE
+    category:
+      "org.commonjava.indy.service":
+        level: DEBUG
+    console:
+      enable: true
+    file:
+      level: INFO
+      enable: true
+      path: "log/indy-storage-service.log"
+      format: "%d{HH:mm:ss} %-5p [%c{2.}] (%t) %s%e%n"
+      rotation:
+        max-backup-index: 5
+        max-file-size: 10M
+
+  swagger-ui:
+    always-include: true
+
+storage:
+  baseDir: /tmp/test
+
+cassandra:
+  host: localhost
+  port: 9042
+  user: cassandra
+  pass: cassandra
+  keyspace: indystorage
